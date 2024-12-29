@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  web:
+    build: 
+      context: "../website "
+      dockerfile: Dockerfile 
+    image: jerry880915/website:v1
+    environment:
+      - PORT=8001
+    env_file:
+      - website/.env
+    ports:
+      - "8001:8001"
+    command: sh -c "chmod +x /app/migrate.sh && /app/entrypoint.sh"
